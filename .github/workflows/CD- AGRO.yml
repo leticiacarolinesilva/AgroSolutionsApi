@@ -1,4 +1,4 @@
-name: CI - FCG_MS_User
+name: CI - AGRO
 
 on:
   push:
