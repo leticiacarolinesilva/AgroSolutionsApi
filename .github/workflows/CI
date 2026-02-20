@@ -3,9 +3,8 @@ name: CI - Unit Tests
 # Define quando o workflow será executado
 on:
   push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
+    branches:
+      - master 
 
 jobs:
   test:
