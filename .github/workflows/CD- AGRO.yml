@@ -22,10 +22,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restaurar pacotes
-      run: dotnet restore FCG_MS_User.sln
+      run: dotnet restore AgroSolutions.sln
 
     - name: Buildar solução
-      run: dotnet build FCG_MS_User.sln --no-restore --configuration Release
+      run: dotnet build AgroSolutions.sln --no-restore --configuration Release
 
     - name: Rodar testes
-      run: dotnet test FCG_MS_User.sln --no-build --configuration Release --logger "trx"
+      run: dotnet test AgroSolutions.sln --no-build --configuration Release --logger "trx"
