@@ -3,7 +3,7 @@ name: CI - AgroSolutions
 # Roda em todo commit na master
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch: # Permite que você clique num botão para rodar manualmente
 
 jobs:
