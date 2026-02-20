@@ -20,7 +20,6 @@ spec:
         - containerPort: 80
         env:
         - name: ConnectionStrings__DefaultConnection
-          # CONEXÃO COM O BANCO EXTERNO (DOCKER DESKTOP)
           value: "Host=host.docker.internal;Port=5432;Database=db_ms_agro;Username=postgres;Password=agro123;"
 ---
 apiVersion: v1
