@@ -1,8 +1,11 @@
 name: CD - AgroSolutions
-
 on:
   push:
-    branches: [ master ]
+    branches:
+    - main
+    - master
+    - release/*
+
 jobs:
   build-and-test:
     name: Build, Testes e Docker Push
