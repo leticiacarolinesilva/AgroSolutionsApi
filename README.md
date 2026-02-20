@@ -1,7 +1,7 @@
 # AgroSolutions MVP
 Esta é uma API robusta desenvolvida para a plataforma AgroSolutions, focada em fornecer serviços backend para o setor agrícola. O projeto foi arquitetado seguindo boas práticas de desenvolvimento, conteinerização com Docker e uma esteira de deploy contínuo (CD) automatizada para o MiniKube EKS
 
-##🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
 Linguagem: .NET Core / C#
 
@@ -17,7 +17,7 @@ CI/CD: GitHub Actions
 
 Banco de Dados: SQL Server (ou o banco configurado via ConnectionString)
 
-##🏗️ Arquitetura de Deploy (CI/CD)
+## 🏗️ Arquitetura de Deploy (CI/CD)
 
 O projeto conta com uma esteira de automação no GitHub Actions que realiza os seguintes passos a cada push na branch master:
 
@@ -44,7 +44,7 @@ docker build -t agrosolutions-api .
 docker run -d -p 8080:80 --name agrosolutions-api agrosolutions-api
 ```
 
-##☸️ Deploy no Kubernetes
+## ☸️ Deploy no Kubernetes
 
 Os manifestos necessários para o deploy estão localizados na pasta /k8s. Para aplicar manualmente:
 ```
