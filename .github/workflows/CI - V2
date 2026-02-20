@@ -1,12 +1,14 @@
-name: CI - Agro
+name: CI - AgroSolutions
 
+# Roda em todo commit na master
 on:
   push:
     branches: [ master ]
+  workflow_dispatch: # Permite que você clique num botão para rodar manualmente
 
 jobs:
   build-and-test:
-    name: Build e Testes Automatizados
+    name: Build e Testes
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +21,12 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restaurar pacotes
-      run: dotnet restore FCG_MS_User.sln
+      # O .NET vai procurar o arquivo .sln automaticamente na raiz
+      run: dotnet restore
 
     - name: Buildar solução
-      run: dotnet build AgroSolutions.sln --no-restore --configuration Release
+      run: dotnet build --no-restore --configuration Release
 
     - name: Rodar testes
-      run: dotnet test AgroSolutions.sln --no-build --configuration Release --logger "trx"
+      # Executa todos os projetos de teste da solução
+      run: dotnet test --no-build --configuration Release --logger "trx"
