@@ -1,7 +1,6 @@
 using AgroSolutions.Domain.Entities;
 using AgroSolutions.Domain.Repositories;
-using AgroSolutions.Infrastructure.Data;
-using AgroSolutions.Infrastructure.Data.Repositories;
+using AgroSolutions.Infrastructure.Repositories;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;

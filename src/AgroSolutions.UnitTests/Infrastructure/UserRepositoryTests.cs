@@ -1,6 +1,5 @@
 using AgroSolutions.Domain.Entities;
 using AgroSolutions.Infrastructure.Data;
-using AgroSolutions.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
@@ -20,7 +19,7 @@ public class UserRepositoryTests
     public async Task AddAndGetByEmail_Works()
     {
         var ctx = CreateContext(nameof(AddAndGetByEmail_Works));
-        var repo = new AgroSolutions.Infrastructure.Data.Repositories.UserRepository(ctx);
+        var repo = new Repositories.UserRepository(ctx);
         var user = new User("T", "u@u.com", BCrypt.Net.BCrypt.HashPassword("p"), "User");
 
         await repo.AddAsync(user);
@@ -35,7 +34,7 @@ public class UserRepositoryTests
     public async Task ExistsByEmail_Count_Delete_Works()
     {
         var ctx = CreateContext(nameof(ExistsByEmail_Count_Delete_Works));
-        var repo = new AgroSolutions.Infrastructure.Data.Repositories.UserRepository(ctx);
+        var repo = new Repositories.UserRepository(ctx);
         var user = new User("X", "x@x.com", BCrypt.Net.BCrypt.HashPassword("p"), "User");
 
         await repo.AddAsync(user);

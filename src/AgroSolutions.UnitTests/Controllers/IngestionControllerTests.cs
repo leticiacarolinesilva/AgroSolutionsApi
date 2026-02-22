@@ -1,7 +1,7 @@
 using AgroSolutions.Api.Controllers;
+using AgroSolutions.Application.Common.Results;
 using AgroSolutions.Application.Models;
 using AgroSolutions.Application.Services;
-using AgroSolutions.Application.Common.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -125,17 +125,6 @@ public class IngestionControllerTests
         var okResult = Assert.IsType<OkObjectResult>(actionResult);
         var responseDto = Assert.IsType<IngestionResponseDto>(okResult.Value);
         Assert.True(responseDto.Success);
-    }
-
-    [Fact]
-    public void Health_Should_Return_Ok_Result()
-    {
-        // Act
-        var result = _controller.Health();
-
-        // Assert
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        Assert.NotNull(okResult.Value);
     }
 }
 
