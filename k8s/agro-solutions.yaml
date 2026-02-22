@@ -1,3 +1,4 @@
+# 1. API DE GESTÃO (AgroAPI)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,8 +15,8 @@ spec:
     spec:
       containers:
       - name: agro-api
-        image: agroapi # Nome da imagem buildada
-        imagePullPolicy: Never
+        image: meeave/agrosolutions-api
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         env:
@@ -52,16 +53,16 @@ spec:
     spec:
       containers:
       - name: function-container
-        image: function-agro:v2 # Versão v2 com correção do GenerateToken
-        imagePullPolicy: Never
+        image: meeave/agrosolutions-function
+        imagePullPolicy: Always
         env:
         - name: ServiceBusConnection
-          value: ""
+          value: "__ServiceBusConnection__"
         - name: Login
-          value: ""  
+          value: "__Login__"  
         - name: Password
-          value: ""
+          value: "__Password__"
         - name: ApiAgroUrl
-          value: "" # Aponta para o Service da API no K8s
+          value: "____Password____"
         - name: AzureWebJobsStorage
-          value: ""
+          value: "UseDevelopmentStorage=true"
