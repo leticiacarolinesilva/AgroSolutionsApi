@@ -3,7 +3,7 @@ using AgroSolutions.Domain.Repositories;
 using AgroSolutions.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace AgroSolutions.Infrastructure.Data.Repositories;
+namespace AgroSolutions.Infrastructure.Repositories;
 
 /// <summary>
 /// Repository implementation for Field entity

@@ -12,7 +12,6 @@ public class Field : Entity
     public string Name { get; private set; }
     public decimal AreaSquareMeters { get; private set; }
     public string CropType { get; private set; }
-    // Backwards compatibility
     public Property? Property { get; private set; }
     public DateTime? PlantingDate { get; private set; }
     public DateTime? HarvestDate { get; private set; }
@@ -40,7 +39,6 @@ public class Field : Entity
         CropType = cropType;
     }
 
-    // Legacy constructor
     public Field(Guid farmId, Property property, string cropType, DateTime? plantingDate = null, DateTime? harvestDate = null)
         : base()
     {

@@ -3,7 +3,6 @@ using AgroSolutions.Api.HealthChecks;
 using AgroSolutions.Application.Common.Notifications;
 using AgroSolutions.Infrastructure.Data;
 using AgroSolutions.Domain.Repositories;
-using AgroSolutions.Infrastructure.Data.Repositories;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -19,6 +18,7 @@ using MediatR;
 using FluentValidation;
 using System.Reflection;
 using AutoMapper;
+using AgroSolutions.Infrastructure.Repositories;
 
 // Configure Serilog
 // Ensure logs directory exists

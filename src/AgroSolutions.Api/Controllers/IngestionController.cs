@@ -39,12 +39,12 @@ public class IngestionController : ControllerBase
     {
         try
         {
-                var result = await _ingestionService.IngestSingleAsync(dto, cancellationToken);
-                
-                if (!result.IsSuccess)
-                    return BadRequest(new { errors = result.Errors.Select(e => new { key = e.Key, message = e.Message }) });
-                
-                return CreatedAtAction(nameof(GetById), new { id = result.Value!.Id }, result.Value);
+            var result = await _ingestionService.IngestSingleAsync(dto, cancellationToken);
+
+            if (!result.IsSuccess)
+                return BadRequest(new { errors = result.Errors.Select(e => new { key = e.Key, message = e.Message }) });
+
+            return CreatedAtAction(nameof(GetById), new { id = result.Value!.Id }, result.Value);
         }
         catch (Exception ex)
         {
@@ -70,12 +70,12 @@ public class IngestionController : ControllerBase
     {
         try
         {
-                var result = await _ingestionService.IngestBatchAsync(batchDto, cancellationToken);
-                
-                if (!result.IsSuccess)
-                    return BadRequest(new { errors = result.Errors.Select(e => new { key = e.Key, message = e.Message }) });
-                
-                return Ok(result.Value);
+            var result = await _ingestionService.IngestBatchAsync(batchDto, cancellationToken);
+
+            if (!result.IsSuccess)
+                return BadRequest(new { errors = result.Errors.Select(e => new { key = e.Key, message = e.Message }) });
+
+            return Ok(result.Value);
         }
         catch (Exception ex)
         {
@@ -101,12 +101,12 @@ public class IngestionController : ControllerBase
     {
         try
         {
-                var result = await _ingestionService.IngestBatchParallelAsync(batchDto, cancellationToken);
-                
-                if (!result.IsSuccess)
-                    return BadRequest(new { errors = result.Errors.Select(e => new { key = e.Key, message = e.Message }) });
-                
-                return Ok(result.Value);
+            var result = await _ingestionService.IngestBatchParallelAsync(batchDto, cancellationToken);
+
+            if (!result.IsSuccess)
+                return BadRequest(new { errors = result.Errors.Select(e => new { key = e.Key, message = e.Message }) });
+
+            return Ok(result.Value);
         }
         catch (Exception ex)
         {
@@ -131,10 +131,10 @@ public class IngestionController : ControllerBase
         try
         {
             var reading = await _ingestionService.GetByIdAsync(id, cancellationToken);
-            
+
             if (reading == null)
                 return NotFound(new { error = $"Sensor reading with ID {id} not found" });
-            
+
             return Ok(reading);
         }
         catch (Exception ex)
@@ -180,8 +180,8 @@ public class IngestionController : ControllerBase
     [ProducesResponseType(typeof(IEnumerable<SensorReadingDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> GetByFieldIdAndSensorType(
-        Guid fieldId, 
-        string sensorType, 
+        Guid fieldId,
+        string sensorType,
         CancellationToken cancellationToken = default)
     {
         try
@@ -194,15 +194,5 @@ public class IngestionController : ControllerBase
             _logger.LogError(ex, "Error retrieving sensor readings for field {FieldId} and sensor type {SensorType}", fieldId, sensorType);
             return BadRequest(new { error = ex.Message });
         }
-    }
-
-    /// <summary>
-    /// Health check endpoint for ingestion service
-    /// </summary>
-    [HttpGet("health")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult Health()
-    {
-        return Ok(new { status = "healthy", service = "ingestion", timestamp = DateTime.UtcNow });
     }
 }

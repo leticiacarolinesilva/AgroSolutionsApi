@@ -1,8 +1,6 @@
-using AgroSolutions.Application.Services;
-using AgroSolutions.Application.Common.Results;
-using AgroSolutions.Application.Models;
 using AgroSolutions.Application.Commands.Alerts;
 using AgroSolutions.Application.Models;
+using AgroSolutions.Application.Services;
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;

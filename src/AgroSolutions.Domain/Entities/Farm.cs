@@ -14,13 +14,12 @@ public class Farm : Entity
     public decimal LengthMeters { get; private set; }
     public decimal TotalAreaSquareMeters { get; private set; }
     public decimal? Precipitation { get; private set; }
-    // Backwards compatibility
     public Property? Property { get; private set; }
     public string? OwnerName { get; private set; }
     public string? OwnerEmail { get; private set; }
     public string? OwnerPhone { get; private set; }
 
-    private Farm() { } // For EF Core
+    private Farm() { }
 
     public Farm(string name, decimal widthMeters, decimal lengthMeters, decimal? precipitation = null, Guid? userId = null)
         : base()
@@ -39,7 +38,6 @@ public class Farm : Entity
         UserId = userId;
     }
 
-    // Legacy constructor for tests/compatibility
     public Farm(Property property, string ownerName, string? ownerEmail = null, string? ownerPhone = null, Guid? userId = null)
         : base()
     {
@@ -86,7 +84,6 @@ public class Farm : Entity
         UserId = userId;
         MarkAsUpdated();
     }
-    // Legacy methods
     public void UpdateProperty(Property newProperty)
     {
         Property = newProperty ?? throw new ArgumentNullException(nameof(newProperty));

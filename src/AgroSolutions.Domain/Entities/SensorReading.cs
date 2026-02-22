@@ -6,24 +6,20 @@ namespace AgroSolutions.Domain.Entities;
 /// </summary>
 public class SensorReading : Entity
 {
-    // Old fields (kept for backward compatibility with other services)
     public Guid FieldId { get; private set; }
-    public string? SensorType { get; private set; } // Temperature, Humidity, SoilMoisture, etc.
+    public string? SensorType { get; private set; }
     public decimal? Value { get; private set; }
-    public string? Unit { get; private set; } // Celsius, Percent, etc.
+    public string? Unit { get; private set; }
     public DateTime? ReadingTimestamp { get; private set; }
-    public string? Location { get; private set; } // GPS coordinates or location identifier
+    public string? Location { get; private set; }
     public Dictionary<string, string>? Metadata { get; private set; }
-
-    // New aggregated telemetry fields
     public decimal? SoilMoisture { get; private set; }
     public decimal? AirTemperature { get; private set; }
     public decimal? Precipitation { get; private set; }
     public bool? IsRichInPests { get; private set; }
 
-    private SensorReading() { } // For EF Core
+    private SensorReading() { }
 
-    // Original constructor kept for ingestion of single sensor-type readings
     public SensorReading(
         Guid fieldId,
         string sensorType,
@@ -52,7 +48,6 @@ public class SensorReading : Entity
         Metadata = metadata;
     }
 
-    // New constructor for aggregated telemetry ingestion
     public SensorReading(Guid fieldId, decimal? soilMoisture = null, decimal? airTemperature = null, decimal? precipitation = null, bool? isRichInPests = null)
         : base()
     {

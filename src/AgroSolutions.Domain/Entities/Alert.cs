@@ -11,12 +11,11 @@ public class Alert : Entity
     public Guid FieldId { get; private set; }
     public AlertStatus Status { get; private set; }
     public bool IsEnable { get; private set; }
-    // Backwards compatibility
     public Guid? FarmId { get; private set; }
     public string? Message { get; private set; }
     public bool IsActive => IsEnable;
 
-    private Alert() { } // For EF Core
+    private Alert() { }
 
     public Alert(Guid fieldId, AlertStatus status, bool isEnable = true)
         : base()
@@ -29,7 +28,6 @@ public class Alert : Entity
         IsEnable = isEnable;
     }
 
-    // Legacy constructor used in older codepaths
     public Alert(Guid fieldId, Guid farmId, AlertStatus status, string message)
         : this(fieldId, status, true)
     {
@@ -54,7 +52,7 @@ public class Alert : Entity
         Status = status;
         MarkAsUpdated();
     }
-    // Legacy methods to preserve API
+
     public void Deactivate()
     {
         IsEnable = false;

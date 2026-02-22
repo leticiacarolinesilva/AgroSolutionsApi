@@ -11,7 +11,7 @@ namespace AgroSolutions.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
-[Authorize] // All endpoints require authentication
+[Authorize]
 public class AlertsController : ControllerBase
 {
     private readonly IAlertService _alertService;

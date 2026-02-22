@@ -1,4 +1,4 @@
-namespace AgroSolutions.Application.Application;
+namespace AgroSolutions.Application;
 
 /// <summary>
 /// Assembly marker for reflection-based registration

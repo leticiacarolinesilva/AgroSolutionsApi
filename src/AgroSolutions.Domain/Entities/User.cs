@@ -10,7 +10,7 @@ public class User : Entity
     public string PasswordHash { get; private set; }
     public string Role { get; private set; } // "Admin" or "User"
 
-    private User() { } // For EF Core
+    private User() { }
 
     public User(string name, string email, string passwordHash, string role)
         : base()

@@ -8,7 +8,7 @@ public class UserAuthorization : Entity
     public Guid UserId { get; private set; }
     public string PermissionType { get; private set; } = string.Empty;
 
-    private UserAuthorization() { } // For EF Core
+    private UserAuthorization() { }
 
     public UserAuthorization(Guid userId, string permissionType)
         : base()
