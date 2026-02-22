@@ -1,4 +1,3 @@
-# 1. API DE GEST√O (AgroAPI)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,7 +20,6 @@ spec:
         - containerPort: 80
         env:
         - name: ConnectionStrings__DefaultConnection
-          # CONEX√O COM O BANCO EXTERNO (DOCKER DESKTOP)
           value: "Host=host.docker.internal;Port=5432;Database=db_ms_agro;Username=postgres;Password=agro123;"
 ---
 apiVersion: v1
@@ -37,7 +35,7 @@ spec:
 
 ---
 
-# 2. SERVI«O DE INGEST√O (Azure Function)
+# 2. SERVI√áO DE INGEST√ÉO (Azure Function)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -54,7 +52,7 @@ spec:
     spec:
       containers:
       - name: function-container
-        image: function-agro:v2 # Vers„o v2 com correÁ„o do GenerateToken
+        image: function-agro:v2 # Vers√£o v2 com corre√ß√£o do GenerateToken
         imagePullPolicy: Never
         env:
         - name: ServiceBusConnection
